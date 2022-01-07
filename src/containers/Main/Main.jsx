@@ -1,16 +1,15 @@
 import React from 'react'
 import { LogicMain } from './LogicMain'
 import { List } from '../../components/List'
+import { Preloader } from '../../components/Preloader'
 export const Main = props => {
   const { loading, movies } = LogicMain()
   return (
     <main className='content container'>
       {loading
-        ? <h1>Loading...</h1>
+        ? <Preloader color='red'></Preloader>
         : <List list={movies}></List>
       }
     </main>
   )
 }
-// http://www.omdbapi.com/?apikey=[yourkey]&
-// 79fb8a48
