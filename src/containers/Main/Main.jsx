@@ -2,14 +2,22 @@ import React from 'react'
 import { LogicMain } from './LogicMain'
 import { List } from '../../components/List'
 import { Preloader } from '../../components/Preloader'
+import { Search } from '../../components/Search/Search'
 export const Main = props => {
-  const { loading, movies } = LogicMain()
+  const { movies, setMovies, loading, setLoading } = LogicMain()
+  console.log(movies)
   return (
     <main className='content container'>
-      {loading
-        ? <Preloader color='red'></Preloader>
-        : <List list={movies}></List>
+      <Search setMovies={setMovies} setLoading={setLoading}></Search>
+      {
+        loading
+          ? <Preloader color='blue'></Preloader>
+          : (
+            movies.error
+              ? <h1>{movies.error}</h1>
+              : <List list={movies}></List>
+          )
       }
-    </main>
+    </main >
   )
 }
