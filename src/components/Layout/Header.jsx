@@ -3,11 +3,9 @@ export const Header = props => {
   return (
     <nav className='light-blue'>
       <div className="nav-wrapper">
-        <a href="/" className="brand-logo">Logo</a>
+        <a href="/" className="brand-logo">Movies</a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">JavaScript</a></li>
+          <li><a href="https://github.com/wwnp/movies-react" target={'_blank'} rel="noreferrer">GitHub</a></li>
         </ul>
       </div>
     </nav>

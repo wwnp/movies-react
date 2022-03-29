@@ -1,4 +1,3 @@
-import React from 'react'
 import { API_KEY } from '../../App'
 import { useState, useEffect } from 'react'
 export const LogicMain = () => {
@@ -9,10 +8,16 @@ export const LogicMain = () => {
       .then(response => response.json())
       .then(json => {
         setMovies(json.Search)
+      })
+      .catch((error) => {
+        setMovies({ error: error.message })
+      })
+      .finally(() => {
         setTimeout(() => {
           setLoading(false)
-        }, 300)
+        }, 500)
       })
+
   }, [])
   return {
     movies,

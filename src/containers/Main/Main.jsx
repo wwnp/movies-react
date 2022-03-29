@@ -13,7 +13,7 @@ export const Main = props => {
         loading
           ? <Preloader color='blue'></Preloader>
           : (
-            movies.error
+            movies?.error
               ? <h1>{movies.error}</h1>
               : <List list={movies}></List>
           )
