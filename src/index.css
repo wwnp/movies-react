@@ -32,12 +32,9 @@ main {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 }
+
 .loader-custom {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%!important; */
-  position: absolute!important;
+  position: absolute !important;
   top: 0;
   left: 0;
   right: 0;

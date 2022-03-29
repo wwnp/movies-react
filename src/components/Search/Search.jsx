@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { LogicSearch } from "./LogicSearch";
-// import { API_KEY } from '../..'
 import { HandleRadios } from "./LogicSearch";
 const ENTER = "Enter";
 const types = {
