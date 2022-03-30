@@ -8,7 +8,7 @@ export const Card = props => {
     Year: year,
     Type: type,
     imdbID
-  } = props // rename keys
+  } = props
   return (
     <div className="card" >
       <div className="card-image">

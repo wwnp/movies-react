@@ -2,7 +2,6 @@ import { API_KEY } from '../../App'
 import { useEffect } from 'react'
 export const LogicSearch = (setMovies, search, setLoading) => {
   const handleUpdate = (type) => {
-    // console.log(freeonesApi)
     let url = `http://www.omdbapi.com/?apikey=${API_KEY}`
     if (search) {
       url += `&s=${search}`

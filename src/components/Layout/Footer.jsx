@@ -1,5 +1,5 @@
 import React from 'react'
-export const Footer = props => {
+export const Footer = () => {
   return (
     <footer className="page-footer light-blue" style={{ paddingTop: 0 }}>
       <div className="footer-copyright">
