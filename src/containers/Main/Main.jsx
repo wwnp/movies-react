@@ -5,7 +5,6 @@ import { Preloader } from '../../components/Preloader'
 import { Search } from '../../components/Search/Search'
 export const Main = props => {
   const { movies, setMovies, loading, setLoading } = LogicMain()
-  console.log(movies)
   return (
     <main className='content container'>
       <Search setMovies={setMovies} setLoading={setLoading}></Search>
