@@ -7,6 +7,7 @@ import { API_KEY } from '../../App'
 export const Main = props => {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
   useEffect(() => {
     fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=warcraft`)
       .then(response => response.json())
@@ -22,6 +23,7 @@ export const Main = props => {
         }, 500)
       })
   }, [])
+
   return (
     <main className='content container'>
       <Search setMovies={setMovies} setLoading={setLoading}></Search>
