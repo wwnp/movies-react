@@ -18,6 +18,7 @@ export const Card = props => {
               ? `https://via.placeholder.com/252x372?text=${title}`
               : poster
           }
+          className={'card-img'}
           alt={title}
         />
       </div>
@@ -27,7 +28,7 @@ export const Card = props => {
         <p>{type}</p>
       </div>
       <div className="card-action">
-        <a href={"/movies/" + imdbID}>This is a link</a>
+        <a className='btn deep-purple white-text' href={"/movies/" + imdbID}>More info...</a>
       </div>
     </div>
     // </div>

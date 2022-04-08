@@ -1,10 +1,28 @@
-import React from 'react'
-import { LogicMain } from './LogicMain'
+import React, { useEffect, useState } from 'react'
 import { List } from '../../components/List'
 import { Preloader } from '../../components/Preloader'
 import { Search } from '../../components/Search/Search'
+import { API_KEY } from '../../App'
+import { Filter } from '../../components/Filter'
+
 export const Main = props => {
-  const { movies, setMovies, loading, setLoading } = LogicMain()
+  const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=warcraft`)
+      .then(response => response.json())
+      .then(json => {
+        setMovies(json.Search)
+      })
+      .catch((error) => {
+        setMovies({ error: error.message })
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false)
+        }, 500)
+      })
+  }, [])
   return (
     <main className='content container'>
       <Search setMovies={setMovies} setLoading={setLoading}></Search>
@@ -17,6 +35,7 @@ export const Main = props => {
               : <List list={movies}></List>
           )
       }
+      {/* <Filter></Filter> */}
     </main >
   )
 }
