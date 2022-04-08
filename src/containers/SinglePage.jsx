@@ -12,7 +12,7 @@ export const SinglePage = () => {
 
   useEffect(() => {
     async function fetchSingle() {
-      const response = await fetch(`http://www.omdbapi.com/?apikey=79fb8a48&i=${id}`)
+      const response = await fetch(`https://www.omdbapi.com/?apikey=79fb8a48&i=${id}`)
       const json = await response.json()
       setSingle(json)
       setLoading(false)
