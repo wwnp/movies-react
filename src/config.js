@@ -6,3 +6,4 @@ export const types = {
   __episode__: "episode",
   __game__: "game",
 };
+export const SEARCH_MIN = 3

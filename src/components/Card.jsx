@@ -1,5 +1,7 @@
 import React from 'react'
 // import { img } from '../images/notfound.png'
+import { Link } from 'react-router-dom';
+
 const notAvailable = 'N/A'
 export const Card = props => {
   const {
@@ -28,7 +30,7 @@ export const Card = props => {
         <p>{type}</p>
       </div>
       <div className="card-action">
-        <a className='btn deep-purple white-text' href={"/movies/" + imdbID}>More info...</a>
+        <Link className='btn deep-purple white-text' to={"/single/" + imdbID}>More info...</Link>
       </div>
     </div>
     // </div>

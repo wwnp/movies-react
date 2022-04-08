@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { API_KEY } from '../../App'
-import { types } from "../../config";
+import { SEARCH_MIN, types } from "../../config";
 import { Filter } from "../Filter";
 
 const ENTER = "Enter";
@@ -19,7 +19,7 @@ export const Search = (props) => {
     if (type !== 'all') {
       url += `&type=${type}`
     }
-    if (search.length >= 2) {
+    if (search.length >= SEARCH_MIN) {
       setLoading(true)
       fetch(url)
         .then(response => response.json())
@@ -39,7 +39,7 @@ export const Search = (props) => {
           }
         })
     } else {
-      alert('At least 2 symbols')
+      alert(`At least ${SEARCH_MIN} symbols`)
     }
   }
 
@@ -87,8 +87,12 @@ export const Search = (props) => {
                     value={types[key]}
                     checked={type === types[key]}
                     onChange={(e) => {
-                      handleUpdate(e.target.value)
-                      setType(e.target.value);
+                      if (search.length >= SEARCH_MIN) {
+                        handleUpdate(e.target.value)
+                        setType(e.target.value);
+                      } else {
+                        alert(`At least ${SEARCH_MIN} symbols`)
+                      }
                     }}
                   />
                   <span>{typeName}</span>
@@ -98,7 +102,7 @@ export const Search = (props) => {
           })}
         </div>
       </div>
-      <Filter types={types} handleUpdate={handleUpdate} type={type} setType={setType}></Filter>
+      <Filter types={types} handleUpdate={handleUpdate} type={type} setType={setType} search={search}></Filter>
     </>
   );
 };

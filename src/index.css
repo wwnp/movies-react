@@ -23,6 +23,10 @@ nav {
   flex-direction: column;
 }
 
+footer {
+  margin-top: auto;
+}
+
 main {
   flex: 1 0 auto;
 }
@@ -95,4 +99,9 @@ main {
 
 .mt-1 {
   margin-top: 1rem;
+}
+
+.spinner-purple,
+.spinner-purple-only {
+  border-color: #673ab7 !important;
 }

@@ -3,7 +3,6 @@ import { List } from '../../components/List'
 import { Preloader } from '../../components/Preloader'
 import { Search } from '../../components/Search/Search'
 import { API_KEY } from '../../App'
-import { Filter } from '../../components/Filter'
 
 export const Main = props => {
   const [movies, setMovies] = useState([])
@@ -28,7 +27,7 @@ export const Main = props => {
       <Search setMovies={setMovies} setLoading={setLoading}></Search>
       {
         loading
-          ? <Preloader color='blue'></Preloader>
+          ? <Preloader color='purple'></Preloader>
           : (
             movies?.error
               ? <h1>{movies.error}</h1>
