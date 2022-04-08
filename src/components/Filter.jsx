@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export const Filter = (props) => {
   const { types, handleUpdate, type, setType } = props
@@ -34,7 +34,6 @@ export const Filter = (props) => {
           })}
         </ul>
       </div>
-
     </div >
   )
 }

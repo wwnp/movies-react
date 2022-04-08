@@ -12,7 +12,7 @@ export const Search = (props) => {
   const [type, setType] = useState(types.__all__);
 
   const handleUpdate = (type) => {
-    let url = `http://www.omdbapi.com/?apikey=${API_KEY}`
+    let url = `https://www.omdbapi.com/?apikey=${API_KEY}`
     if (search) {
       url += `&s=${search}`
     }

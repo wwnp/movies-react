@@ -78,10 +78,6 @@ main {
   }
 }
 
-/* .main__filter-mobile {
-  margin-top: 1rem;
-} */
-
 @media screen and (min-width: 1476px) {
   .main__filter-mobile {
     display: none;
