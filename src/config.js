@@ -7,3 +7,4 @@ export const types = {
   __game__: "game",
 };
 export const SEARCH_MIN = 3
+export const CARDS_PER_PAGE = 10

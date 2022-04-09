@@ -18,7 +18,6 @@ root.render(
           <Route path='single/:id' element={<SinglePage />}></Route>
           <Route path='*' element={<Notfound />}></Route>
         </Route>
-
       </Routes>
     </React.StrictMode>
   </BrowserRouter >

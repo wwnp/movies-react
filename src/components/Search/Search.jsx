@@ -7,41 +7,49 @@ import { Filter } from "../Filter";
 const ENTER = "Enter";
 
 export const Search = (props) => {
-  const { setMovies, setLoading } = props
-  const [search, setSearch] = useState("");
-  const [type, setType] = useState(types.__all__);
+  const {
+    setMovies,
+    setLoading,
+    search,
+    handleUpdate,
+    setSearch,
+    type,
+    setType
+  } = props
+  // const [search, setSearch] = useState("");
 
-  const handleUpdate = (type) => {
-    let url = `https://www.omdbapi.com/?apikey=${API_KEY}`
-    if (search) {
-      url += `&s=${search}`
-    }
-    if (type !== 'all') {
-      url += `&type=${type}`
-    }
-    if (search.length >= SEARCH_MIN) {
-      setLoading(true)
-      fetch(url)
-        .then(response => response.json())
-        .then(json => {
-          if (json.Error) {
-            setMovies({
-              error: json.Error,
-            })
-            setTimeout(() => {
-              setLoading(false)
-            }, 300)
-          } else {
-            setMovies(json.Search)
-            setTimeout(() => {
-              setLoading(false)
-            }, 300)
-          }
-        })
-    } else {
-      alert(`At least ${SEARCH_MIN} symbols`)
-    }
-  }
+
+  // const handleUpdate = (type) => {
+  //   let url = `https://www.omdbapi.com/?apikey=${API_KEY}`
+  //   if (search) {
+  //     url += `&s=${search}`
+  //   }
+  //   if (type !== 'all') {
+  //     url += `&type=${type}`
+  //   }
+  //   if (search.length >= SEARCH_MIN) {
+  //     setLoading(true)
+  //     fetch(url)
+  //       .then(response => response.json())
+  //       .then(json => {
+  //         if (json.Error) {
+  //           setMovies({
+  //             error: json.Error,
+  //           })
+  //           setTimeout(() => {
+  //             setLoading(false)
+  //           }, 300)
+  //         } else {
+  //           setMovies(json.Search)
+  //           setTimeout(() => {
+  //             setLoading(false)
+  //           }, 300)
+  //         }
+  //       })
+  //   } else {
+  //     alert(`At least ${SEARCH_MIN} symbols`)
+  //   }
+  // }
 
   return (
     <>

@@ -105,3 +105,16 @@ main {
 .spinner-purple-only {
   border-color: #673ab7 !important;
 }
+
+.pagination-link {
+  margin-right: 3px;
+  background-color: #d4c0f8 !important;
+}
+
+.pagination-link:hover {
+  background-color: #b490f7 !important;
+}
+
+.pagination li.active {
+  background-color: #673ab7 !important;
+}
