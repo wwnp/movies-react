@@ -118,3 +118,22 @@ main {
 .pagination li.active {
   background-color: #673ab7 !important;
 }
+
+.MuiPagination-root {
+  background-color: #562f99 !important;
+}
+
+.MuiPagination-ul {
+  justify-content: center;
+}
+
+.MuiPagination-root ul li a {
+  color: #fff;
+}
+
+.Mui-selected {
+  background-color: #fff !important;
+  color: #673ab7 !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+}

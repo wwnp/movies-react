@@ -3,9 +3,11 @@ import { List } from '../../components/List'
 import { Preloader } from '../../components/Preloader'
 import { Search } from '../../components/Search/Search'
 import { API_KEY } from '../../App'
-import { Pagination } from '../../components/Pagination'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { SEARCH_MIN, types } from '../../config'
+// import { Pagination } from '../../components/Pagination'
+import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import { CARDS_PER_PAGE, SEARCH_MIN, types } from '../../config'
+import { Pagination, PaginationItem } from '@mui/material';
+
 
 const queryString = require('query-string');
 
@@ -21,23 +23,6 @@ export const Main = props => {
   const [quantity, setQuantity] = useState(0)
   const [search, setSearch] = useState("warcraft");
   const [type, setType] = useState(types.__all__);
-  // useEffect(() => {
-  //   fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=warcraft&page=${page}`)
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       setMovies(json.Search)
-  //       console.log(json)
-  //       setQuantity(json.totalResults)
-  //     })
-  //     .catch((error) => {
-  //       setMovies({ error: error.message })
-  //     })
-  //     .finally(() => {
-  //       setTimeout(() => {
-  //         setLoading(false)
-  //       }, 500)
-  //     })
-  // }, [])
 
   useEffect(() => {
     let url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`
@@ -80,38 +65,8 @@ export const Main = props => {
   }, [page, type])
 
 
-  // useEffect(() => {
-  //   navigate(`? page = ${ page }`)
-  //   let url = `https://www.omdbapi.com/?apikey=${API_KEY}`
-  //   if (search) {
-  //     url += `&s=${search}`
-  //   }
-  //   if (page) {
-  //     url += `&s=${page}`
-  //   }
-  //   if (type !== 'all') {
-  //     url += `&type=${type}`
-  //   }
-  //   fetch(url)
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       setMovies(json.Search)
-  //       console.log(json)
-  //       setQuantity(json.totalResults)
-  //     })
-  //     .catch((error) => {
-  //       setMovies({ error: error.message })
-  //     })
-  //     .finally(() => {
-  //       setTimeout(() => {
-  //         setLoading(false)
-  //       }, 500)
-  //     })
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [page])
-
-
   const handleUpdate = (type) => {
+    setPage(1)
     let url = `https://www.omdbapi.com/?apikey=${API_KEY}`
     if (search) {
       url += `&s=${search}`
@@ -166,12 +121,42 @@ export const Main = props => {
             movies?.error
               ? <h1>{movies.error}</h1>
               : <>
-                <Pagination quantity={quantity} page={page} setPage={setPage}></Pagination>
-                {
-
-                }
+                {!!quantity && (
+                  <Pagination
+                    count={Math.ceil(quantity / CARDS_PER_PAGE)}
+                    page={page}
+                    onChange={(_, num) => setPage(num)}
+                    showFirstButton
+                    showLastButton
+                    sx={{ marginY: 3, marginX: "auto" }}
+                    renderItem={(item) => (
+                      <PaginationItem
+                        component={NavLink}
+                        to={`/?page=${item.page}`}
+                        {...item}
+                      />
+                    )}
+                  />
+                )}
                 <List list={movies}></List>
-                <Pagination quantity={quantity} page={page} setPage={setPage}></Pagination>
+                {!!quantity && (
+                  <Pagination
+                    count={Math.ceil(quantity / CARDS_PER_PAGE)}
+                    page={page}
+                    onChange={(_, num) => setPage(num)}
+                    showFirstButton
+                    showLastButton
+                    sx={{ marginY: 3, marginX: "auto" }}
+                    renderItem={(item) => (
+                      <PaginationItem
+                        component={NavLink}
+                        to={`/?page=${item.page}`}
+                        {...item}
+                      />
+                    )}
+                  />
+                )}
+                {/* <Pagination quantity={quantity} page={page} setPage={setPage}></Pagination> */}
               </>
           )
       }
